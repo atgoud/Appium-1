@@ -5,9 +5,11 @@ import com.sayem.appium.pagefactory.framework.browser.mobile.MobileBrowser;
 import com.sayem.appium.pagefactory.framework.config.TimeoutsConfig;
 import com.sayem.appium.pagefactory.framework.exception.WebDriverException;
 
-public class BaseTest {
+public abstract class BaseTest {
 
-    public static MobileBrowser invoke() throws WebDriverException {
+    protected MobileBrowser mobile;
+
+    public static MobileBrowser android() throws WebDriverException {
 
         TimeoutsConfig timeouts = TimeoutsConfig.builder()
                 .pageLoadTimoutSeconds(10)
