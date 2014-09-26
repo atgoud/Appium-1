@@ -1,33 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Appium by sayems</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <title>Appium by sayems</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Appium</h1>
-        <p>Native iPhone app test automation with Appium</p>
-        <p class="view"><a href="https://github.com/sayems/Appium">View the Project on GitHub <small>sayems/Appium</small></a></p>
-        <ul>
-          <li><a href="https://github.com/sayems/Appium/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/sayems/Appium/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/sayems/Appium">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h3>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Appium</h1>
+          <h2>Native iPhone app test automation with Appium</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/sayems/Appium/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/sayems/Appium/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/sayems/Appium" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h3>
 <a name="welcome-to-appium-pages" class="anchor" href="#welcome-to-appium-pages"><span class="octicon octicon-link"></span></a>Welcome to Appium Pages.</h3>
 
 <p>This framework provides many valuable features for simplifying Selenium/Appium Web/Native Mobile app's testing. It simplifies the configuration and creation of Appium Driver for different platform. The framework also provides a Page abstraction for modeling your mobile/web app's pages.</p>
@@ -67,20 +71,7 @@ $ git checkout gh-pages
 <span class="o">}</span>                              
 </pre></div>
 
-<h3>
-<a name="seleniumactions" class="anchor" href="#seleniumactions"><span class="octicon octicon-link"></span></a>SeleniumActions</h3>
-
-<ul>
-<li>SeleniumActions are for interacting with the DOM and javascript of a page.</li>
-<li>Obtain a SeleniumActions from a Browser instance with browser.getActions()</li>
-<li>Provides methods for waiting until a WebElement is present or visible.</li>
-<li>Provides methods to refresh the page until a WebElement is present or visible.</li>
-<li>Provides methods for finding a WebElement containing specific text.</li>
-<li>Provides methods for interacting with Tiny MCE text editors.</li>
-<li>Provides methods to load Pages.</li>
-<li>Provides much more functionality.</li>
-<li>Pages</li>
-</ul><p>Pages provide an abstraction for modeling the pages for your webapp.
+<p>Pages provide an abstraction for modeling the pages for your webapp.
 Pages should extend BaseTopLevelPage or BaseSubPage.
 Uses the Selenium <a href="https://github.com/FindBy" class="user-mention">@FindBy</a> annotation to instantiate member variables that are WebElements.
 Use the annotation @SubPageField to indicate a member variable that is a SubPage and should be instantiated on page load.
@@ -90,19 +81,19 @@ Then, test code is incredibly simple. It just delegates to Page classes and perf
 <h3>
 <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
 <h3>
 <a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
 
 <p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
+        </section>
+
+        <footer>
+          Appium is maintained by <a href="https://github.com/sayems">sayems</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
     </div>
-    <footer>
-      <p>Project maintained by <a href="https://github.com/sayems">sayems</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
   </body>
 </html>
