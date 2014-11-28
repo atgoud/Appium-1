@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>Mobile Test Automation Framework (MTAF) by sayems</title>
+    <meta name="description" content="Mobile Test Automation Framework (MTAF) : Native iOS/Android app test automation with Appium">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Mobile Test Automation Framework (MTAF)</title>
   </head>
 
   <body>
-    <div id="container">
-      <div class="inner">
 
-        <header>
-          <h1>Mobile Test Automation Framework (MTAF)</h1>
-          <h2>Native iOS/Android app test automation with Appium</h2>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/sayems/Appium">View on GitHub</a>
+
+          <h1 id="project_title">Mobile Test Automation Framework (MTAF)</h1>
+          <h2 id="project_tagline">Native iOS/Android app test automation with Appium</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/sayems/Appium/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/sayems/Appium/tarball/master">Download this project as a tar.gz file</a>
+            </section>
         </header>
+    </div>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/sayems/Appium/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/sayems/Appium/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/sayems/Appium" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
-          <h3>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
 <a id="welcome-to-mtaf-pages" class="anchor" href="#welcome-to-mtaf-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to MTAF Pages.</h3>
 
 <p>Mobile Test Automation Framework (MTAF) is a test automation framework which provides seamless testing of a wide range of web-browsers, mobile browsers and native mobile applications such as iOS and Android application:</p>
@@ -62,25 +62,26 @@
 
 <p><strong>Example,</strong> Sample code creating a Mobile instance (Android) in PageObject/PageFactory</p>
 
-<div class="highlight highlight-java"><pre>             <span class="pl-stj">TimeoutsConfig</span> timeouts <span class="pl-k">=</span> getTimeoutsConfig();
-             <span class="pl-stj">MobileBrowser</span> mobile <span class="pl-k">=</span> createAndroidTest(timeouts);
-             mobile<span class="pl-k">.</span>getActions()<span class="pl-k">.</span>loadTopLevelPage(<span class="pl-stj">LoginPage</span><span class="pl-k">.</span>class)<span class="pl-k">.</span>login();
-             mobile<span class="pl-k">.</span>quit();
-            <span class="pl-s">private</span> <span class="pl-stj">MobileBrowser</span> createAndroidTest(<span class="pl-stj">TimeoutsConfig</span> timeouts) throws <span class="pl-stj">WebDriverException</span> {
-                 <span class="pl-k">return</span> <span class="pl-stj">MobileBrowserBuilder</span><span class="pl-k">.</span>getAndroidBuilder(android<span class="pl-k">.</span>getAppUrl())
-                             .withTimeoutsConfig(timeouts)
-                             .withPlatformVersion(android<span class="pl-k">.</span>getPlatformVersion())
-                             .withDeviceName(android<span class="pl-k">.</span>getDeviceName())
-                             .withApp(android<span class="pl-k">.</span>getAppPath())
-                             .withAppPackage(android<span class="pl-k">.</span>getAppPackage())
-                             .withAppActivity(android<span class="pl-k">.</span>getAppAcitivity())
-                             .build();
-            <span class="pl-s">private</span> <span class="pl-stj">TimeoutsConfig</span> getTimeoutsConfig() {
-                <span class="pl-k">return</span> <span class="pl-stj">TimeoutsConfig</span><span class="pl-k">.</span>builder()
-                            .pageLoadTimoutSeconds(<span class="pl-c1">10</span>)
-                            .implicitWaitTimeoutMillis(<span class="pl-c1">20000</span>)
-                            .build();
-            }</pre></div>
+<div class="highlight highlight-java"><pre><span class="pl-stj">TimeoutsConfig</span> timeouts <span class="pl-k">=</span> getTimeoutsConfig();
+<span class="pl-stj">MobileBrowser</span> mobile <span class="pl-k">=</span> createAndroidTest(timeouts);
+mobile<span class="pl-k">.</span>getActions()<span class="pl-k">.</span>loadTopLevelPage(<span class="pl-stj">LoginPage</span><span class="pl-k">.</span>class)<span class="pl-k">.</span>login();
+mobile<span class="pl-k">.</span>quit();
+
+<span class="pl-s">private</span> <span class="pl-stj">MobileBrowser</span> createAndroidTest(<span class="pl-stj">TimeoutsConfig</span> timeouts) throws <span class="pl-stj">WebDriverException</span> {
+       <span class="pl-k">return</span> <span class="pl-stj">MobileBrowserBuilder</span><span class="pl-k">.</span>getAndroidBuilder(android<span class="pl-k">.</span>getAppUrl())
+             .withTimeoutsConfig(timeouts)
+             .withPlatformVersion(android<span class="pl-k">.</span>getPlatformVersion())
+             .withDeviceName(android<span class="pl-k">.</span>getDeviceName())
+             .withApp(android<span class="pl-k">.</span>getAppPath())
+             .withAppPackage(android<span class="pl-k">.</span>getAppPackage())
+             .withAppActivity(android<span class="pl-k">.</span>getAppAcitivity())
+             .build();
+<span class="pl-s">private</span> <span class="pl-stj">TimeoutsConfig</span> getTimeoutsConfig() {
+     <span class="pl-k">return</span> <span class="pl-stj">TimeoutsConfig</span><span class="pl-k">.</span>builder()
+             .pageLoadTimoutSeconds(<span class="pl-c1">10</span>)
+             .implicitWaitTimeoutMillis(<span class="pl-c1">20000</span>)
+             .build();
+}</pre></div>
 
 <h3>
 <a id="seleniumactions" class="anchor" href="#seleniumactions" aria-hidden="true"><span class="octicon octicon-link"></span></a>SeleniumActions</h3>
@@ -108,15 +109,18 @@ Then, test code is incredibly simple. It just delegates to Page classes and perf
 <a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
 
 <p>Having trouble with Pages? Check out the javadocs documentation at <a href="http://sayems.github.io/appium/">http://sayems.github.io/appium/</a> or contact <a href="mailto:syed@sayem.org">syed@sayem.org</a> and I’ll help you sort it out.</p>
-        </section>
-
-        <footer>
-          Mobile Test Automation Framework (MTAF) is maintained by <a href="https://github.com/sayems">sayems</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-        
-      </div>
+      </section>
     </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Mobile Test Automation Framework (MTAF) maintained by <a href="https://github.com/sayems">sayems</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
   </body>
 </html>
