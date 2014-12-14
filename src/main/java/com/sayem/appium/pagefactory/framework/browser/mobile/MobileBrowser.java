@@ -4,20 +4,17 @@ import com.sayem.appium.pagefactory.framework.browser.Browser;
 import com.sayem.appium.pagefactory.framework.browser.web.WebBrowserType;
 import com.sayem.appium.pagefactory.framework.config.TimeoutsConfig;
 import com.sayem.appium.pagefactory.framework.exception.WebDriverException;
-import com.sayem.appium.pagefactory.framework.pages.Page;
+import com.sayem.appium.pagefactory.framework.pages.BaseTopLevelPage;
 import com.sayem.appium.pagefactory.framework.pages.TopLevelPage;
 import io.appium.java_client.AppiumDriver;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -29,22 +26,37 @@ public abstract class MobileBrowser extends Browser<AppiumDriver> {
     private static Logger logger = LoggerFactory.getLogger(MobileBrowser.class);
 
     protected String browserName;
+    protected String platform;
     protected String platformName;
     protected String platformVersion;
     protected String deviceName;
+    protected String newCommandTimeout;
+    protected String automationName;
+    protected String version;
+    protected String autoLaunch;
     protected String app;
-    protected AppiumDriver driver;
 
     protected MobileBrowser(String baseTestUrl,
                             TimeoutsConfig timeoutsConfig, String browserName,
-                            String platformName, String platformVersion,
+                            String platform,
+                            String platformName,
+                            String platformVersion,
                             String deviceName,
+                            String newCommandTimeout,
+                            String automationName,
+                            String version,
+                            String autoLaunch,
                             String app) throws WebDriverException {
         super(baseTestUrl, timeoutsConfig);
         this.browserName = browserName;
+        this.platform = platform;
         this.platformName = platformName;
         this.platformVersion = platformVersion;
         this.deviceName = deviceName;
+        this.newCommandTimeout = newCommandTimeout;
+        this.automationName = automationName;
+        this.version = version;
+        this.autoLaunch = autoLaunch;
         this.app = app;
     }
 
@@ -53,20 +65,17 @@ public abstract class MobileBrowser extends Browser<AppiumDriver> {
         this.webDriver.manage().timeouts().implicitlyWait(getImplicitWaitTimeoutMillis(), TimeUnit.MILLISECONDS);
     }
 
-    public int getScreenWidth() { return this.webDriver.manage().window().getSize().getWidth();}
-
-    public int getScreenHeight() { return this.webDriver.manage().window().getSize().getHeight();}
-
-    protected AppiumDriver createWebDriver() throws WebDriverException {
-        try {
-            printCapabilities(getDesiredCapabilities());
-            return new AppiumDriver(new URL(getBaseTestUrl()), getDesiredCapabilities());
-        } catch (IOException e) {
-            throw new WebDriverException("Error starting appium driver service", e);
-        }
+    public int getScreenWidth() {
+        return this.webDriver.manage().window().getSize().getWidth();
     }
 
-    private void printCapabilities(DesiredCapabilities desiredCapabilities) {
+    public int getScreenHeight() {
+        return this.webDriver.manage().window().getSize().getHeight();
+    }
+
+    protected abstract AppiumDriver createWebDriver() throws WebDriverException;
+
+    protected void printCapabilities(DesiredCapabilities desiredCapabilities) {
         logger.info("Loading capabilities..");
         for (Map.Entry<String, ?> desiredCapability : desiredCapabilities.asMap().entrySet()) {
             logger.info(desiredCapability.getKey() + "  -  " + desiredCapability.getValue());
@@ -79,7 +88,7 @@ public abstract class MobileBrowser extends Browser<AppiumDriver> {
     @Override
     public void refreshPage() {
         runLeavePageHook();
-        Page currentPage = PAGE_UTILS.loadCurrentPage(Page.class, webDriver, this.getActions());
+        BaseTopLevelPage currentPage = PAGE_UTILS.loadCurrentPage(BaseTopLevelPage.class, webDriver, this.getActions());
         currentPage.refreshPage();
         if (optionalCachedPage.isPresent()) {
             TopLevelPage cachedPage = optionalCachedPage.get().getCachedPage();
@@ -88,7 +97,10 @@ public abstract class MobileBrowser extends Browser<AppiumDriver> {
     }
 
     /**
+     *
      * @param pageClass - the class of the expected Page after refreshing.
+     * @param <T> - class that extends TopLevelPage class
+     * @return - a page of the requested class
      */
     @Override
     public <T extends TopLevelPage> T refreshPage(Class<T> pageClass) {
@@ -110,6 +122,10 @@ public abstract class MobileBrowser extends Browser<AppiumDriver> {
         return platformName;
     }
 
+    public String getPlatform() {
+        return platform;
+    }
+
     public String getPlatformVersion() {
         return platformVersion;
     }
@@ -123,9 +139,6 @@ public abstract class MobileBrowser extends Browser<AppiumDriver> {
     }
 
     //**********~~~~~~~~~~~~~ Mobile Actions ~~~~~~~~~~~~~~~*************
-    public void shake() {
-        webDriver.shake();
-    }
 
     public void rotateLandscape() {
         webDriver.rotate(ScreenOrientation.LANDSCAPE);
@@ -154,7 +167,7 @@ public abstract class MobileBrowser extends Browser<AppiumDriver> {
      */
     public void dragDown() {
         int midScreen = getScreenWidth() / 2;
-        webDriver.swipe(midScreen, 50, midScreen, getScreenHeight() - 20, 1000);
+        webDriver.swipe(midScreen, 250, midScreen, getScreenHeight() - 250, 1500);
     }
 
     /**
@@ -162,15 +175,25 @@ public abstract class MobileBrowser extends Browser<AppiumDriver> {
      */
     public void dragUp() {
         int midScreen = webDriver.manage().window().getSize().getWidth() / 2;
-        webDriver.swipe(midScreen, getScreenHeight() - 20, midScreen, 50, 1000);
+        webDriver.swipe(midScreen, getScreenHeight() - 250, midScreen, 250, 2500);
+    }
+
+    /**
+     * Swipe from the top to bottom for 2.5 seconds
+     * @param yStart - 0 is the upper side of the smart-phone
+     * @param yEnd - the end coordinate of the drag function
+     */
+    public void drag(int yStart, int yEnd) {
+        int midScreen = getScreenWidth() / 2;
+        webDriver.swipe(midScreen, yStart, midScreen, yEnd, 2500);
     }
 
     /**
      *
      * @param startX - 0 is the left side of the smart-phone
-     * @param endX
+     * @param endX - end coordinate of the right/left movement
      * @param startY - 0 is the upper side of the smart-phone
-     * @param endY
+     * @param endY - end coordinate of the up/down movement
      * @param duration - in milliseconds
      */
     public void swipe(int startX, int endX, int startY, int endY, int duration) {
@@ -197,12 +220,5 @@ public abstract class MobileBrowser extends Browser<AppiumDriver> {
         webDriver.launchApp();
     }
 
-    public void scrollToTop() {
-        int currentHeight = webDriver.manage().window().getPosition().getY();
-        while (currentHeight > 20) {
-            dragDown();
-            currentHeight = webDriver.manage().window().getPosition().getY();
-        }
-
-    }
+    public abstract void scrollToTop();
 }

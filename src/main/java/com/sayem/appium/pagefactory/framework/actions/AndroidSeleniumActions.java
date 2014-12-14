@@ -18,3 +18,4 @@ public class AndroidSeleniumActions extends BaseSeleniumActions<AndroidMobileBro
         super(browser);
     }
 }
+

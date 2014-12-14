@@ -106,8 +106,8 @@ public class RemoteBrowserBuilder {
      * @param seleniumHubURL - URL with port to the Selenium HUB, e.g. http://selenium.my.company.com:4444/wd/hub
      */
     public static RemoteBrowserBuilder getBuilder(WebBrowserType browserType,
-                                              String baseTestUrl,
-                                              String seleniumHubURL) {
+                                                  String baseTestUrl,
+                                                  String seleniumHubURL) {
         return new RemoteBrowserBuilder(browserType, baseTestUrl, seleniumHubURL);
     }
 
@@ -148,7 +148,7 @@ public class RemoteBrowserBuilder {
      * Creates the RemoteBrowser instance, which includes creating the actual Browser process via the underlying WebDriver.
      *
      * @return - a {@link com.sayem.appium.pagefactory.framework.browser.web.RemoteBrowser},
-     * @throws com.sayem.appium.pagefactory.framework.exception.WebDriverException
+     * @throws WebDriverException
      */
     public RemoteBrowser build() throws WebDriverException {
         logger.info("Building Remote Browser with the following config: \n{}", toString());

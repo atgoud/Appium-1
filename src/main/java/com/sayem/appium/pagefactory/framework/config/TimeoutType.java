@@ -33,7 +33,7 @@ public enum TimeoutType {
     /** Timeout waiting for a new page to load **/
     PAGE_LOAD_TIMEOUT,
     /** Timeout waiting on anything that requires refreshing the page many times, e.g. something like an Activity Stream.
-    *  Used by SeleniumActions#findElementContainingTextWithRefresh and other methods that refresh the page until something is present. **/
+     *  Used by SeleniumActions#findElementContainingTextWithRefresh and other methods that refresh the page until something is present. **/
     POLLING_WITH_REFRESH_TIMEOUT,
     /** Arbitrary short timeout configured by the client. **/
     SHORT,

@@ -32,8 +32,8 @@
 
 
     <properties>
-        <appium-version>1.6.2</appium-version>
-        <selenium-version>2.42.2</selenium-version>
+        <appium-version>2.1.0</appium-version>
+        <selenium-version>2.44.0</selenium-version>
         <junit-version>4.11</junit-version>
         <testng-version>6.8.8</testng-version>
         <gson-version>2.2.4</gson-version>

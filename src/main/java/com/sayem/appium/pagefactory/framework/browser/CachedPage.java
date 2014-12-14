@@ -21,3 +21,4 @@ public final class CachedPage {
         return cachedPage;
     }
 }
+

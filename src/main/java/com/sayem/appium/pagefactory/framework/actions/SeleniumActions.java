@@ -63,7 +63,7 @@ public interface SeleniumActions {
      * Click without polling for the element to be clickable or waiting until it's ready.
      * Uses the implicit wait timeout built-in to Selenium.
      *
-     * @throws com.sayem.appium.pagefactory.framework.exception.WebDriverException - if the element isn't clickable when this method is called.
+     * @throws WebDriverException - if the element isn't clickable when this method is called.
      */
     public WebElement clickNoWait(By locator) throws WebDriverException;
 
@@ -167,6 +167,10 @@ public interface SeleniumActions {
 
     public void waitForJavascriptSymbolToHaveValue(String symbol, String value, TimeoutType timeout);
 
+    public String getWebPageReadyState() throws Exception;
+
+    public void waitForWebPageReadyStateToBeComplete();
+
     /**
      * Immediately return true or false as to whether a web element exists on the page.
      */
@@ -177,6 +181,37 @@ public interface SeleniumActions {
     public WebElement findElementWithRefresh(By locator, TimeoutType timeout);
 
     public WebElement findVisibleElementWithRefresh(By locator, TimeoutType timeout);
+
+    /**
+     * Find the first element located by 'parentLocator' that has at least 1 child element located by the relative locator 'childLocator'
+     * @param parentLocator - locator to find parent elements
+     * @param childLocator - relative locator to find child elements inside a parent element
+     * @return - parent element that have at least 1 child element located by 'childLocator', or null if there are none.
+     */
+    public WebElement findElementContainingChild(final By parentLocator, final By childLocator);
+
+    /**
+     * Find elements located by 'parentLocator' that have child elements located by the relative locator 'childLocator'
+     * @param parentLocator - locator to find parent elements
+     * @param childLocator - relative locator to find child elements inside a parent element
+     * @return - parent elements that have at least 1 child element located by 'childLocator'
+     */
+    public List<WebElement> findElementsContainingChild(final By parentLocator, final By childLocator);
+
+    /**
+     * Search for a WebElement located by 'locator' that has a child element located in its sub-tree
+     * located by 'childLocator'.
+     *
+     * Poll repeatedly until a timeout occurs, but do not refresh the page.
+     *
+     * @param parentLocator - parent locator
+     * @param childLocator - a locator relative to the parent to find the child element
+     *
+     * @return - the parent element located by the 'locator' param
+     */
+    public WebElement findElementContainingChildWithWait(final By parentLocator, final By childLocator, TimeoutType timeout);
+
+    public List<WebElement> findElementsContainingChildWithWait(final By parentLocator, final By childLocator, TimeoutType timeout);
 
     public WebElement findElementContainingText(By locator, String text);
 
@@ -352,6 +387,13 @@ public interface SeleniumActions {
     public void waitOnPredicateWithRefresh(Predicate<Object> predicate, String message, TimeoutType timeout);
 
     public <T> T waitOnExpectedCondition(ExpectedCondition<T> expectedCondition, String message, TimeoutType timeout);
+
+    /**
+     * Verify the given WebElement becomes stale (removed from the DOM).
+     * @param element - element we expect to be removed from the DOM
+     * @param timeout - timeout type, defaults to the webElementPresenceTimeout (typically 5 seconds).
+     */
+    public void verifyElementRemoved(WebElement element, TimeoutType timeout);
 
     public WebElement verifyPageRefreshed(WebElement elementFromBeforeRefresh, By locatorAfterRefresh, TimeoutType timeout);
 

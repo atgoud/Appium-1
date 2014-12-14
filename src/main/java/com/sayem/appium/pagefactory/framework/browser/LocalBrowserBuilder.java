@@ -134,7 +134,7 @@ public class LocalBrowserBuilder {
      * @return - a {@link com.sayem.appium.pagefactory.framework.browser.web.FirefoxBrowser},
      * {@link com.sayem.appium.pagefactory.framework.browser.web.ChromeBrowser},
      * or {@link com.sayem.appium.pagefactory.framework.browser.web.InternetExplorerBrowser}
-     * @throws com.sayem.appium.pagefactory.framework.exception.WebDriverException
+     * @throws WebDriverException
      */
     public WebBrowser build() throws WebDriverException {
         logger.info("Building Local Browser with the following config: \n{}", toString());

@@ -3,7 +3,7 @@ package com.sayem.appium.pagefactory.framework.config;
 import com.google.common.base.Preconditions;
 
 /**
- * <p>Represents the timeout configuration used by a {@link com.sayem.appium.pagefactory.framework.browser.Browser}.</p>
+ * <p>Represents the timeout configuration used by a {@link com.jivesoftware.selenium.pagefactory.framework.browser.Browser}.</p>
  *
  * <p>Use TimeoutsConfig.defaultTimeoutsConfig() to get an instance with default timeout values.</p>
  *
@@ -12,7 +12,6 @@ import com.google.common.base.Preconditions;
  *
  * @see TimeoutType
  */
-
 public final class TimeoutsConfig {
 
     // Standard timeouts for most common usages
@@ -38,7 +37,7 @@ public final class TimeoutsConfig {
     /**
      * Return a Builder for constructing a TimeoutsConfig instance.
      * The Builder is populated with default timeouts, and you can modify them as desired, then call builder.build().
-     * @return - a {@link com.sayem.appium.pagefactory.framework.config.TimeoutsConfig.Builder}
+     * @return - a {@link com.jivesoftware.selenium.pagefactory.framework.config.TimeoutsConfig.Builder}
      */
     public static Builder builder() {
         return new Builder();
@@ -52,9 +51,9 @@ public final class TimeoutsConfig {
     }
 
     private TimeoutsConfig(int clickTimeoutSeconds, int webElementPresenceTimeoutSeconds, int pollingWithRefreshTimeoutSeconds,
-                          int pageRefreshTimeoutSeconds, int shortTimeoutSeconds, int mediumTimeoutSeconds, int longTimeoutSeconds,
-                          int pauseBetweenKeysMillis, int pauseBetweenTriesMillis, int pauseBetweenRefreshSeconds,
-                          int pageLoadTimeoutSeconds, int implicitWaitTimeoutMillis) {
+                           int pageRefreshTimeoutSeconds, int shortTimeoutSeconds, int mediumTimeoutSeconds, int longTimeoutSeconds,
+                           int pauseBetweenKeysMillis, int pauseBetweenTriesMillis, int pauseBetweenRefreshSeconds,
+                           int pageLoadTimeoutSeconds, int implicitWaitTimeoutMillis) {
         this.clickTimeoutSeconds = clickTimeoutSeconds;
         this.webElementPresenceTimeoutSeconds = webElementPresenceTimeoutSeconds;
         this.pollingWithRefreshTimeoutSeconds = pollingWithRefreshTimeoutSeconds;
@@ -181,17 +180,17 @@ public final class TimeoutsConfig {
 
         public TimeoutsConfig build() {
             return new TimeoutsConfig(clickTimeoutSeconds,
-                                      webElementPresenceTimeoutSeconds,
-                                      pollingWithRefreshTimeoutSeconds,
-                                      pageRefreshTimeoutSeconds,
-                                      shortTimeoutSeconds,
-                                      mediumTimeoutSeconds,
-                                      longTimeoutSeconds,
-                                      pauseBetweenKeysMillis,
-                                      pauseBetweenTriesMillis,
-                                      pauseBetweenRefreshSeconds,
-                                      pageLoadTimeoutSeconds,
-                                      implicitWaitTimeoutMillis);
+                    webElementPresenceTimeoutSeconds,
+                    pollingWithRefreshTimeoutSeconds,
+                    pageRefreshTimeoutSeconds,
+                    shortTimeoutSeconds,
+                    mediumTimeoutSeconds,
+                    longTimeoutSeconds,
+                    pauseBetweenKeysMillis,
+                    pauseBetweenTriesMillis,
+                    pauseBetweenRefreshSeconds,
+                    pageLoadTimeoutSeconds,
+                    implicitWaitTimeoutMillis);
         }
 
         /**

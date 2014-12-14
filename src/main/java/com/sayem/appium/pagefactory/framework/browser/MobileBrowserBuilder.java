@@ -34,10 +34,16 @@ public class MobileBrowserBuilder {
     private String browserName;
     private MobilePlatformName platformName;
     private String platformVersion;
+    private String platform;
     private String deviceName;
     private String app;
     private String appPackage;
     private String appActivity;
+    private String newCommandTimeout;
+    private String automationName;
+    private String version;
+    private String autoLaunch;
+    private boolean touchMode;
 
 
     private MobileBrowserBuilder(String baseTestUrl,
@@ -69,6 +75,26 @@ public class MobileBrowserBuilder {
         return platformVersion;
     }
 
+    public String getPlatform() {
+        return platform;
+    }
+
+    public String getNewCommandTimeout() {
+        return newCommandTimeout;
+    }
+
+    public String getAutomationName() {
+        return automationName;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public String getAutoLaunch() {
+        return autoLaunch;
+    }
+
     public String getDeviceName() {
         return deviceName;
     }
@@ -85,6 +111,9 @@ public class MobileBrowserBuilder {
         return appActivity;
     }
 
+    public boolean isTouchMode() {
+        return touchMode;
+    }
 
     /**
      * Get a MobileBrowserBuilder for Android and base URL for the webapp you are testing against.
@@ -115,18 +144,25 @@ public class MobileBrowserBuilder {
         MobileBrowser browser;
         switch (platformName) {
             case ANDROID:
-                browser = new AndroidMobileBrowser(baseTestUrl, browserName, platformName.getPlatformName(), platformVersion,
-                        deviceName, app, appPackage, appActivity, timeoutsConfig);
+                browser = new AndroidMobileBrowser(baseTestUrl, browserName, platform, platformName.getPlatformName(),
+                        platformVersion, deviceName, newCommandTimeout, automationName, version, autoLaunch,
+                        app, appPackage, appActivity, timeoutsConfig, touchMode);
                 break;
             case IOS:
-                browser = new IOSMobileBrowser(baseTestUrl, browserName, platformName.getPlatformName(), platformVersion,
-                        deviceName, app, timeoutsConfig);
+                browser = new IOSMobileBrowser(baseTestUrl, browserName, platform, platformName.getPlatformName(),
+                        platformVersion, deviceName, newCommandTimeout, automationName, version, autoLaunch,
+                        app, timeoutsConfig);
                 break;
             default:
                 throw new IllegalArgumentException("Only IOS and Android are currently supported!");
         }
         browser.initializeBrowser();
         return browser;
+    }
+
+    public MobileBrowserBuilder withTouchMode(boolean touchMode) {
+        this.touchMode = touchMode;
+        return this;
     }
 
     public MobileBrowserBuilder withTimeoutsConfig(TimeoutsConfig timeoutsConfig) {
@@ -169,6 +205,30 @@ public class MobileBrowserBuilder {
         return this;
     }
 
+    public MobileBrowserBuilder withNewCommandTimeout(String newCommandTimeout) {
+        this.newCommandTimeout = newCommandTimeout;
+        return this;
+    }
+
+    public MobileBrowserBuilder withAutomationName(String automationName) {
+        this.automationName = automationName;
+        return this;
+    }
+
+    public MobileBrowserBuilder withVersion(String version) {
+        this.version = version;
+        return this;
+    }
+
+    public MobileBrowserBuilder withAutoLaunch(String autoLaunch) {
+        this.autoLaunch = autoLaunch;
+        return this;
+    }
+
+    public MobileBrowserBuilder withPlatform(String platform) {
+        this.platform = platform;
+        return this;
+    }
 
     @Override
     public String toString() {
@@ -176,11 +236,16 @@ public class MobileBrowserBuilder {
                 .add("baseTestUrl", baseTestUrl)
                 .add("browserName", browserName)
                 .add("platformName", platformName.getPlatformName())
+                .add("platform", platform)
                 .add("platformVersion", platformVersion)
                 .add("deviceName", deviceName)
                 .add("app", app)
                 .add("appPackage", appPackage)
                 .add("appActivity", appActivity)
+                .add("newCommandTimeout", newCommandTimeout)
+                .add("automationName", automationName)
+                .add("version", version)
+                .add("autoLaunch", autoLaunch)
                 .toString();
     }
 }

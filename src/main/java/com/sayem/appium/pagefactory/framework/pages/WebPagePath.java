@@ -19,3 +19,4 @@ public @interface WebPagePath {
     @Nonnull String path();
 
 }
+
