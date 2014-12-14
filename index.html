@@ -35,50 +35,52 @@
 
 <p><strong>Example,</strong> Create a TimeoutsConfig instance. You can also just use TimeoutsConfig.defaultTimeoutsConfig().</p>
 
-<div class="highlight highlight-java"><pre><span class="pl-stj">TimeoutsConfig</span> timeouts <span class="pl-k">=</span> <span class="pl-stj">TimeoutsConfig</span><span class="pl-k">.</span>builder()
-    .clickTimeoutSeconds(<span class="pl-c1">2</span>)
-    .webElementPresenceTimeoutSeconds(<span class="pl-c1">5</span>) 
-    .pageLoadTimoutSeconds(<span class="pl-c1">10</span>) 
-    .implicitWaitTimeoutMillis(<span class="pl-c1">2000</span>)
-    .build();</pre></div>
+<pre><code>TimeoutsConfig timeouts = TimeoutsConfig.builder()
+    .clickTimeoutSeconds(2)
+    .webElementPresenceTimeoutSeconds(5) 
+    .pageLoadTimoutSeconds(10) 
+   .implicitWaitTimeoutMillis(2000)
+   .build();
+</code></pre>
 
-<p><strong>Example,</strong> JavaScripts in Selenium</p>
+<p><strong>Example,</strong> Chrome Browser in Selenium</p>
 
-<div class="highlight highlight-java"><pre><span class="pl-stj">Browser</span> browser <span class="pl-k">=</span> <span class="pl-stj">LocalBrowserBuilder</span><span class="pl-k">.</span>getChromeBuilder(<span class="pl-s1"><span class="pl-pds">"</span>http://my.webapp.com/webapp<span class="pl-pds">"</span></span>)  <span class="pl-c">// Base URL for testing. </span>
-    .withTimeoutsConfig(timeouts)             <span class="pl-c">// TimeoutsConfig created above.</span>
-    .withBrowserLocale(<span class="pl-stj">Locale</span><span class="pl-c1"><span class="pl-k">.</span>US</span><span class="pl-k">.</span>toString())  <span class="pl-c">// Browser locale</span>
-    .withStartWindowWidth(<span class="pl-c1">1280</span>)               <span class="pl-c">// Starting width for the browser window in pixels</span>
-    .withStartWindowHeight(<span class="pl-c1">1024</span>)              <span class="pl-c">// Starting height for the browser window in pixels</span>
-    .withBrowserLogLevel(<span class="pl-stj">Level</span><span class="pl-c1"><span class="pl-k">.</span>INFO</span>)          <span class="pl-c">// Logging Level for the WebDriver's logs</span>
-    .withBrowserLogFile(<span class="pl-s1"><span class="pl-pds">"</span>chromedriver.log<span class="pl-pds">"</span></span>)   <span class="pl-c">// Path to logfile, only supported for Chrome and IE. </span>
+<pre><code>Browser browser = LocalBrowserBuilder.getChromeBuilder("http://my.webapp.com/webapp") 
+    .withTimeoutsConfig(timeouts)              
+    .withBrowserLocale(Locale.US.toString())   
+    .withStartWindowWidth(1280)               
+    .withStartWindowHeight(1024)               
+    .withBrowserLogLevel(Level.INFO)         
+    .withBrowserLogFile("chromedriver.log")   
     .build();
 
-<span class="pl-c">// Load a web page</span>
-<span class="pl-stj">TopLevelPage</span> googleHomePage <span class="pl-k">=</span> browser<span class="pl-k">.</span>openPageByUrl(<span class="pl-s1"><span class="pl-pds">"</span>http://google.com<span class="pl-pds">"</span></span>);
-</pre></div>
+TopLevelPage googleHomePage = browser.openPageByUrl("http://google.com");
+</code></pre>
 
 <p><strong>Example,</strong> Sample code creating a Mobile instance (Android) in PageObject/PageFactory</p>
 
-<div class="highlight highlight-java"><pre><span class="pl-stj">TimeoutsConfig</span> timeouts <span class="pl-k">=</span> getTimeoutsConfig();
-<span class="pl-stj">MobileBrowser</span> mobile <span class="pl-k">=</span> createAndroidTest(timeouts);
-mobile<span class="pl-k">.</span>getActions()<span class="pl-k">.</span>loadTopLevelPage(<span class="pl-stj">LoginPage</span><span class="pl-k">.</span>class)<span class="pl-k">.</span>login();
-mobile<span class="pl-k">.</span>quit();
+<pre><code>TimeoutsConfig timeouts = getTimeoutsConfig();
+MobileBrowser mobile = createAndroidTest(timeouts);
+mobile.getActions().loadTopLevelPage(LoginPage.class).login();
+mobile.quit();
 
-<span class="pl-s">private</span> <span class="pl-stj">MobileBrowser</span> createAndroidTest(<span class="pl-stj">TimeoutsConfig</span> timeouts) throws <span class="pl-stj">WebDriverException</span> {
-       <span class="pl-k">return</span> <span class="pl-stj">MobileBrowserBuilder</span><span class="pl-k">.</span>getAndroidBuilder(android<span class="pl-k">.</span>getAppUrl())
-             .withTimeoutsConfig(timeouts)
-             .withPlatformVersion(android<span class="pl-k">.</span>getPlatformVersion())
-             .withDeviceName(android<span class="pl-k">.</span>getDeviceName())
-             .withApp(android<span class="pl-k">.</span>getAppPath())
-             .withAppPackage(android<span class="pl-k">.</span>getAppPackage())
-             .withAppActivity(android<span class="pl-k">.</span>getAppAcitivity())
-             .build();
-<span class="pl-s">private</span> <span class="pl-stj">TimeoutsConfig</span> getTimeoutsConfig() {
-     <span class="pl-k">return</span> <span class="pl-stj">TimeoutsConfig</span><span class="pl-k">.</span>builder()
-             .pageLoadTimoutSeconds(<span class="pl-c1">10</span>)
-             .implicitWaitTimeoutMillis(<span class="pl-c1">20000</span>)
-             .build();
-}</pre></div>
+private MobileBrowser createAndroidTest(TimeoutsConfig timeouts) throws WebDriverException {
+       return MobileBrowserBuilder.getAndroidBuilder(android.getAppUrl())
+            .withTimeoutsConfig(timeouts)
+            .withPlatformVersion(android.getPlatformVersion())
+            .withDeviceName(android.getDeviceName())
+            .withApp(android.getAppPath())
+            .withAppPackage(android.getAppPackage())
+            .withAppActivity(android.getAppAcitivity())
+            .build();
+private TimeoutsConfig getTimeoutsConfig() {
+     return TimeoutsConfig.builder()
+            .pageLoadTimoutSeconds(10)
+            .implicitWaitTimeoutMillis(20000)
+            .build();
+</code></pre>
+
+<p>}</p>
 
 <h3>
 <a id="seleniumactions" class="anchor" href="#seleniumactions" aria-hidden="true"><span class="octicon octicon-link"></span></a>SeleniumActions</h3>
