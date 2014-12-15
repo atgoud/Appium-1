@@ -1,0 +1,30 @@
+15 Dec 2014 09:57:24 INFO  INFO  MobileBrowserBuilder  - Building Mobile Browser with the following config: 
+MobileBrowserBuilder{baseTestUrl=http://127.0.0.1:4723/wd/hub, browserName=null, platformName=Android, platform=null, platformVersion=4.4, deviceName=Moto X, app=/Users/ssayem/Downloads/Mobile/src/test/resources/com.whatsapp.apk, appPackage=com.whatsapp, appActivity=com.whatsapp.Main, newCommandTimeout=null, automationName=null, version=null, autoLaunch=null}
+15 Dec 2014 11:23:44 INFO  INFO  MobileBrowserBuilder  - Building Mobile Browser with the following config: 
+MobileBrowserBuilder{baseTestUrl=http://127.0.0.1:4723/wd/hub, browserName=null, platformName=Android, platform=null, platformVersion=4.4, deviceName=Moto X, app=/Users/ssayem/Downloads/Mobile/src/test/resources/com.whatsapp.apk, appPackage=com.whatsapp, appActivity=com.whatsapp.Main, newCommandTimeout=null, automationName=null, version=null, autoLaunch=null}
+15 Dec 2014 11:28:30 INFO  INFO  MobileBrowserBuilder  - Building Mobile Browser with the following config: 
+MobileBrowserBuilder{baseTestUrl=http://127.0.0.1:4723/wd/hub, browserName=null, platformName=Android, platform=null, platformVersion=4.4, deviceName=Moto X, app=/Users/ssayem/Downloads/Mobile/src/test/resources/com.whatsapp.apk, appPackage=com.whatsapp, appActivity=com.whatsapp.Main, newCommandTimeout=null, automationName=null, version=null, autoLaunch=null}
+15 Dec 2014 11:32:09 INFO  INFO  MobileBrowserBuilder  - Building Mobile Browser with the following config: 
+MobileBrowserBuilder{baseTestUrl=http://127.0.0.1:4723/wd/hub, browserName=, platformName=Android, platform=null, platformVersion=4.4, deviceName=Moto X, app=/Users/ssayem/Downloads/Mobile/src/test/resources/com.whatsapp.apk, appPackage=com.whatsapp, appActivity=com.whatsapp.Main, newCommandTimeout=null, automationName=null, version=null, autoLaunch=null}
+15 Dec 2014 11:32:50 INFO  INFO  MobileBrowserBuilder  - Building Mobile Browser with the following config: 
+MobileBrowserBuilder{baseTestUrl=http://127.0.0.1:4723/wd/hub, browserName=null, platformName=Android, platform=null, platformVersion=4.4, deviceName=Moto X, app=/Users/ssayem/Downloads/Mobile/src/test/resources/com.whatsapp.apk, appPackage=com.whatsapp, appActivity=com.whatsapp.Main, newCommandTimeout=null, automationName=null, version=null, autoLaunch=null}
+15 Dec 2014 11:40:20 INFO  INFO  MobileBrowserBuilder  - Building Mobile Browser with the following config: 
+MobileBrowserBuilder{baseTestUrl=http://127.0.0.1:4723/wd/hub, browserName=null, platformName=Android, platform=Android, platformVersion=4.4, deviceName=Moto X, app=/Users/ssayem/Downloads/Mobile/src/test/resources/com.whatsapp.apk, appPackage=com.whatsapp, appActivity=com.whatsapp.Main, newCommandTimeout=null, automationName=null, version=null, autoLaunch=null}
+15 Dec 2014 11:40:32 INFO  INFO  MobileBrowserBuilder  - Building Mobile Browser with the following config: 
+MobileBrowserBuilder{baseTestUrl=http://127.0.0.1:4723/wd/hub, browserName=null, platformName=Android, platform=MAC, platformVersion=4.4, deviceName=Moto X, app=/Users/ssayem/Downloads/Mobile/src/test/resources/com.whatsapp.apk, appPackage=com.whatsapp, appActivity=com.whatsapp.Main, newCommandTimeout=null, automationName=null, version=null, autoLaunch=null}
+15 Dec 2014 11:40:32 INFO  INFO  MobileBrowser  - Loading capabilities..
+15 Dec 2014 11:40:32 INFO  INFO  MobileBrowser  - app  -  /Users/ssayem/Downloads/Mobile/src/test/resources/com.whatsapp.apk
+15 Dec 2014 11:40:32 INFO  INFO  MobileBrowser  - appPackage  -  com.whatsapp
+15 Dec 2014 11:40:32 INFO  INFO  MobileBrowser  - appWaitActivity  -  com.whatsapp.Main
+15 Dec 2014 11:40:32 INFO  INFO  MobileBrowser  - deviceName  -  Moto X
+15 Dec 2014 11:40:32 INFO  INFO  MobileBrowser  - version  -  null
+15 Dec 2014 11:40:32 INFO  INFO  MobileBrowser  - fullReset  -  true
+15 Dec 2014 11:40:32 INFO  INFO  MobileBrowser  - platform  -  MAC
+15 Dec 2014 11:40:32 INFO  INFO  MobileBrowser  - ensureCleanSession  -  true
+15 Dec 2014 11:40:32 INFO  INFO  MobileBrowser  - newCommandTimeout  -  null
+15 Dec 2014 11:40:32 INFO  INFO  MobileBrowser  - autoLaunch  -  null
+15 Dec 2014 11:40:32 INFO  INFO  MobileBrowser  - platformVersion  -  4.4
+15 Dec 2014 11:40:32 INFO  INFO  MobileBrowser  - automationName  -  null
+15 Dec 2014 11:40:32 INFO  INFO  MobileBrowser  - browserName  -  null
+15 Dec 2014 11:40:32 INFO  INFO  MobileBrowser  - platformName  -  Android
+15 Dec 2014 11:40:33 INFO  INFO  BaseSeleniumActions  - Waiting for locator element 'By.id: com.whatsapp:id/eula_accept' to be clickable, using timeout of 5 seconds

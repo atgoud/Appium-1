@@ -10,7 +10,7 @@ import org.openqa.selenium.remote.RemoteTouchScreen;
 import java.net.URL;
 
 /**
- * Created by amir on 11/18/14.
+ * Created by Tapan on 11/18/14.
  */
 public class SwipeableWebDriver extends AndroidDriver implements HasTouchScreen {
     private RemoteTouchScreen touch;

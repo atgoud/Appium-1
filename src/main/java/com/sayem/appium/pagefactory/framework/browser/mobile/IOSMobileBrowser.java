@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 
 /**
- * Added by Syed.Sayem
+ * Added by Shimath
  * Known bug of Apple from Xcode 5 and iOS 7.1 Simulator - swipe is not working on simulator.
  * As a workaround, using scrollTo in JavaScript.
  * As in real devices regular swipe works but not scrollTo, using the regular command as well

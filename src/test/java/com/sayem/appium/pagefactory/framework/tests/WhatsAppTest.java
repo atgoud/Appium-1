@@ -20,6 +20,7 @@ public class WhatsAppTest {
         MobileBrowser mobileBrowser = MobileBrowserBuilder.getAndroidBuilder("http://127.0.0.1:4723/wd/hub")
 
                 .withTimeoutsConfig(timeouts)
+                .withPlatform("MAC")
                 .withPlatformVersion("4.4")
                 .withDeviceName("Moto X")
                 .withApp("/Users/ssayem/Downloads/Mobile/src/test/resources/com.whatsapp.apk")
