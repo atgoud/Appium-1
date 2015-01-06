@@ -4,10 +4,6 @@ import com.google.common.base.Objects;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
 import com.sayem.appium.pagefactory.framework.browser.web.*;
-import com.sayem.appium.pagefactory.framework.browser.web.ChromeBrowser;
-import com.sayem.appium.pagefactory.framework.browser.web.FirefoxBrowser;
-import com.sayem.appium.pagefactory.framework.browser.web.InternetExplorerBrowser;
-import com.sayem.appium.pagefactory.framework.browser.web.RemoteBrowser;
 import com.sayem.appium.pagefactory.framework.config.TimeoutsConfig;
 import com.sayem.appium.pagefactory.framework.exception.WebDriverException;
 import org.slf4j.Logger;
@@ -16,17 +12,16 @@ import org.slf4j.LoggerFactory;
 import java.util.logging.Level;
 
 /**
- *
  * <p>Builder class for creating a {@link com.sayem.appium.pagefactory.framework.browser.web.RemoteBrowser}.
  * A RemoteBrowser is a browser running in a Selenium Grid, that works
  * by connecting to a Selenium Hub. See https://code.google.com/p/selenium/wiki/Grid2</p>
- *
+ * <p/>
  * <p>In other words, a RemoteBrowser is a wrapper around a {@link org.openqa.selenium.remote.RemoteWebDriver}
  * that simplifies configuration and unifies options across all Browsers.</p>
- *
+ * <p/>
  * <p>You can call {@link #getBuilder(WebBrowserType, String, String)} to get a builder, or you can equivalently call
  * {@link #getChromeBuilder(String, String)}, {@link #getFirefoxBuilder(String, String)}, or {@link #getInternetExplorerBuilder(String, String)}.
- *
+ * <p/>
  * Calling RemoteBrowserBuilder.getBuilder(BrowserType.CHROME, ...)
  * is equivalent to calling RemoteBrowserBuilder.getChromeBuilder(...).</p>
  */
@@ -54,6 +49,53 @@ public class RemoteBrowserBuilder {
         this.baseTestUrl = Preconditions.checkNotNull(baseTestUrl, "You must provide a non-null baseTestUrl!");
         this.seleniumHubURL = Preconditions.checkNotNull(seleniumHubURL, "You must provide a non-null seleniumHubURL");
         this.timeoutsConfig = TimeoutsConfig.defaultTimeoutsConfig();
+    }
+
+    /**
+     * Get a RemoteBrowserBuilder used to construct a RemoteBrowser instance that helps you to run Selenium tests
+     * against a remote Browser running in a Selenium Grid.
+     *
+     * @param browserType    - CHROME, FIREFOX, or IE
+     * @param baseTestUrl    - base URL of the webapp you are testing, e.g. http://my.site.com/base
+     * @param seleniumHubURL - URL with port to the Selenium HUB, e.g. http://selenium.my.company.com:4444/wd/hub
+     */
+    public static RemoteBrowserBuilder getBuilder(WebBrowserType browserType,
+                                                  String baseTestUrl,
+                                                  String seleniumHubURL) {
+        return new RemoteBrowserBuilder(browserType, baseTestUrl, seleniumHubURL);
+    }
+
+    /**
+     * Get a RemoteBrowserBuilder used to construct a RemoteBrowser instance that helps you to run Selenium tests
+     * against a remote Browser running in a Selenium Grid. For CHROME browser.
+     *
+     * @param baseTestUrl    - base URL of the webapp you are testing, e.g. http://my.site.com/base
+     * @param seleniumHubURL - URL with port to the Selenium HUB, e.g. http://selenium.my.company.com:4444/wd/hub
+     */
+    public static RemoteBrowserBuilder getChromeBuilder(String baseTestUrl, String seleniumHubURL) {
+        return new RemoteBrowserBuilder(WebBrowserType.CHROME, baseTestUrl, seleniumHubURL);
+    }
+
+    /**
+     * Get a RemoteBrowserBuilder used to construct a RemoteBrowser instance that helps you to run Selenium tests
+     * against a remote Browser running in a Selenium Grid. For FIREFOX browser.
+     *
+     * @param baseTestUrl    - base URL of the webapp you are testing, e.g. http://my.site.com/base
+     * @param seleniumHubURL - URL with port to the Selenium HUB, e.g. http://selenium.my.company.com:4444/wd/hub
+     */
+    public static RemoteBrowserBuilder getFirefoxBuilder(String baseTestUrl, String seleniumHubURL) {
+        return new RemoteBrowserBuilder(WebBrowserType.FIREFOX, baseTestUrl, seleniumHubURL);
+    }
+
+    /**
+     * Get a RemoteBrowserBuilder used to construct a RemoteBrowser instance that helps you to run Selenium tests
+     * against a remote Browser running in a Selenium Grid. For IE browser.
+     *
+     * @param baseTestUrl    - base URL of the webapp you are testing, e.g. http://my.site.com/base
+     * @param seleniumHubURL - URL with port to the Selenium HUB, e.g. http://selenium.my.company.com:4444/wd/hub
+     */
+    public static RemoteBrowserBuilder getInternetExplorerBuilder(String baseTestUrl, String seleniumHubURL) {
+        return new RemoteBrowserBuilder(WebBrowserType.IE, baseTestUrl, seleniumHubURL);
     }
 
     //------------Getters in case the client wants to inspect the config they have so far-----------
@@ -95,53 +137,6 @@ public class RemoteBrowserBuilder {
 
     public Optional<String> getBrowserLogFile() {
         return browserLogFile;
-    }
-
-    /**
-     * Get a RemoteBrowserBuilder used to construct a RemoteBrowser instance that helps you to run Selenium tests
-     * against a remote Browser running in a Selenium Grid.
-     *
-     * @param browserType - CHROME, FIREFOX, or IE
-     * @param baseTestUrl - base URL of the webapp you are testing, e.g. http://my.site.com/base
-     * @param seleniumHubURL - URL with port to the Selenium HUB, e.g. http://selenium.my.company.com:4444/wd/hub
-     */
-    public static RemoteBrowserBuilder getBuilder(WebBrowserType browserType,
-                                                  String baseTestUrl,
-                                                  String seleniumHubURL) {
-        return new RemoteBrowserBuilder(browserType, baseTestUrl, seleniumHubURL);
-    }
-
-    /**
-     * Get a RemoteBrowserBuilder used to construct a RemoteBrowser instance that helps you to run Selenium tests
-     * against a remote Browser running in a Selenium Grid. For CHROME browser.
-     *
-     * @param baseTestUrl - base URL of the webapp you are testing, e.g. http://my.site.com/base
-     * @param seleniumHubURL - URL with port to the Selenium HUB, e.g. http://selenium.my.company.com:4444/wd/hub
-     */
-    public static RemoteBrowserBuilder getChromeBuilder(String baseTestUrl, String seleniumHubURL) {
-        return new RemoteBrowserBuilder(WebBrowserType.CHROME, baseTestUrl, seleniumHubURL);
-    }
-
-    /**
-     * Get a RemoteBrowserBuilder used to construct a RemoteBrowser instance that helps you to run Selenium tests
-     * against a remote Browser running in a Selenium Grid. For FIREFOX browser.
-     *
-     * @param baseTestUrl - base URL of the webapp you are testing, e.g. http://my.site.com/base
-     * @param seleniumHubURL - URL with port to the Selenium HUB, e.g. http://selenium.my.company.com:4444/wd/hub
-     */
-    public static RemoteBrowserBuilder getFirefoxBuilder(String baseTestUrl, String seleniumHubURL) {
-        return new RemoteBrowserBuilder(WebBrowserType.FIREFOX, baseTestUrl, seleniumHubURL);
-    }
-
-    /**
-     * Get a RemoteBrowserBuilder used to construct a RemoteBrowser instance that helps you to run Selenium tests
-     * against a remote Browser running in a Selenium Grid. For IE browser.
-     *
-     * @param baseTestUrl - base URL of the webapp you are testing, e.g. http://my.site.com/base
-     * @param seleniumHubURL - URL with port to the Selenium HUB, e.g. http://selenium.my.company.com:4444/wd/hub
-     */
-    public static RemoteBrowserBuilder getInternetExplorerBuilder(String baseTestUrl, String seleniumHubURL) {
-        return new RemoteBrowserBuilder(WebBrowserType.IE, baseTestUrl, seleniumHubURL);
     }
 
     /**

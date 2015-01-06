@@ -148,7 +148,7 @@ public abstract class WebBrowser extends Browser<WebDriver> {
      * Opens a new page in the Browser by URL. An absolute URL or the path can be provided.
      * If a path is provided, then the baseTestUrl provided when creating the browser will be used as the
      * base of the URL.
-     *
+     * <p/>
      * Invalidates the cached page and loads a fresh new page.
      *
      * @param href - the href from a link, which may be a relative path from baseTestUrl or may be absolute
@@ -163,10 +163,10 @@ public abstract class WebBrowser extends Browser<WebDriver> {
 
     /**
      * Opens a new page in the Browser by URL. An absolute URL or the path can be provided.
-     *
+     * <p/>
      * Invalidates the cached page and loads a fresh new page.
      *
-     * @param href - the href from a link, which may be a relative path from baseTestUrl or may be absolute
+     * @param href      - the href from a link, which may be a relative path from baseTestUrl or may be absolute
      * @param pageClass - the {@link com.sayem.appium.pagefactory.framework.pages.TopLevelPage} class to load.
      */
     public <T extends TopLevelPage> T openPageByURL(String href, Class<T> pageClass) throws URISyntaxException {

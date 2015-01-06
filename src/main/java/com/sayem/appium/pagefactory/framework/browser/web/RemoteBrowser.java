@@ -27,13 +27,13 @@ import java.util.logging.Level;
  * <p>Represents a RemoteBrowser, i.e. running a Browser on a Selenium Node controlled by a Selenium Hub.
  * To create an instance, pass in the "delegate" browser and the URL to the Selenium Hub.
  * Example Selenium Hub URL: http://hub.my.company.com:4444/wd/hub</p>
- *
+ * <p/>
  * See <a href="http://code.google.com/p/selenium/wiki/Grid2">http://code.google.com/p/selenium/wiki/Grid2</a>
  */
 public class RemoteBrowser extends WebBrowser {
+    private static final Logger logger = LoggerFactory.getLogger(RemoteBrowser.class);
     protected WebBrowser delegate;
     protected String seleniumHubURL;
-    private static final Logger logger = LoggerFactory.getLogger(RemoteBrowser.class);
 
 
     public RemoteBrowser(WebBrowser delegate, String seleniumHubURL) {

@@ -14,18 +14,18 @@ import javax.annotation.Nullable;
  * Subclasses should call super.pageLoadHook() if they want to wait on the page identifier.
  */
 public class BaseSubPage<S extends SeleniumActions> implements SubPage {
+    private static final PageUtils PAGE_UTILS = new PageUtils();
     @SuppressWarnings("unused")
     private static Logger logger = LoggerFactory.getLogger(BaseSubPage.class);
-    private static final PageUtils PAGE_UTILS = new PageUtils();
     protected S a;
     protected Page parent = null;
 
-    public final void setParent(Page parent) {
-        this.parent = parent;
-    }
-
     public final Page getParent() {
         return this.parent;
+    }
+
+    public final void setParent(Page parent) {
+        this.parent = parent;
     }
 
     public final boolean hasParent() {

@@ -4,7 +4,7 @@ import com.sayem.appium.pagefactory.framework.browser.web.ChromeBrowser;
 
 /**
  * Selenium Actions for Chrome Browser.
- *
+ * <p/>
  * Currently, this is the same as BaseSeleniumActions, as we don't have any need to implement anything differently
  * for Chrome.
  */

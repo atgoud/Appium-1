@@ -29,6 +29,33 @@ public class InternetExplorerBrowser extends WebBrowser {
         super(baseTestUrl, timeouts, driverPath, browserBinaryPath, browserVersion, browserLocale, startWindowWidth, startWindowHeight, browserLogLevel, browserLogFile);
     }
 
+    private static String convertJavaLogLevelToIeLogLevel(String javaLogLevel) {
+        if ("WARN".equals(javaLogLevel)) {
+            javaLogLevel = "WARNING";
+        }
+        Level javaLevel = Level.parse(javaLogLevel);
+        if (Level.ALL.equals(javaLevel)) {
+            return InternetExplorerDriverLogLevel.TRACE.toString();
+        } else if (Level.CONFIG.equals(javaLevel)) {
+            return InternetExplorerDriverLogLevel.TRACE.toString();
+        } else if (Level.FINE.equals(javaLevel)) {
+            return InternetExplorerDriverLogLevel.DEBUG.toString();
+        } else if (Level.FINER.equals(javaLevel)) {
+            return InternetExplorerDriverLogLevel.TRACE.toString();
+        } else if (Level.FINEST.equals(javaLevel)) {
+            return InternetExplorerDriverLogLevel.TRACE.toString();
+        } else if (Level.INFO.equals(javaLevel)) {
+            return InternetExplorerDriverLogLevel.INFO.toString();
+        } else if (Level.OFF.equals(javaLevel)) {
+            return InternetExplorerDriverLogLevel.FATAL.toString();
+        } else if (Level.SEVERE.equals(javaLevel)) {
+            return InternetExplorerDriverLogLevel.ERROR.toString();
+        } else if (Level.WARNING.equals(javaLevel)) {
+            return InternetExplorerDriverLogLevel.WARN.toString();
+        }
+        return InternetExplorerDriverLogLevel.INFO.toString();
+    }
+
     @Override
     public WebBrowserType getBrowserType() {
         return WebBrowserType.IE;
@@ -58,33 +85,6 @@ public class InternetExplorerBrowser extends WebBrowser {
         desiredCapabilities.setCapability(CapabilityType.LOGGING_PREFS, loggingPreferences);
 
         return desiredCapabilities;
-    }
-
-    private static String convertJavaLogLevelToIeLogLevel(String javaLogLevel) {
-        if ("WARN".equals(javaLogLevel)) {
-            javaLogLevel = "WARNING";
-        }
-        Level javaLevel = Level.parse(javaLogLevel);
-        if (Level.ALL.equals(javaLevel)) {
-            return InternetExplorerDriverLogLevel.TRACE.toString();
-        } else if (Level.CONFIG.equals(javaLevel)) {
-            return InternetExplorerDriverLogLevel.TRACE.toString();
-        } else if (Level.FINE.equals(javaLevel)) {
-            return InternetExplorerDriverLogLevel.DEBUG.toString();
-        } else if (Level.FINER.equals(javaLevel)) {
-            return InternetExplorerDriverLogLevel.TRACE.toString();
-        } else if (Level.FINEST.equals(javaLevel)) {
-            return InternetExplorerDriverLogLevel.TRACE.toString();
-        } else if (Level.INFO.equals(javaLevel)) {
-            return InternetExplorerDriverLogLevel.INFO.toString();
-        } else if (Level.OFF.equals(javaLevel)) {
-            return InternetExplorerDriverLogLevel.FATAL.toString();
-        } else if (Level.SEVERE.equals(javaLevel)) {
-            return InternetExplorerDriverLogLevel.ERROR.toString();
-        } else if (Level.WARNING.equals(javaLevel)) {
-            return InternetExplorerDriverLogLevel.WARN.toString();
-        }
-        return InternetExplorerDriverLogLevel.INFO.toString();
     }
 
     @Override

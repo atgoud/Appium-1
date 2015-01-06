@@ -97,9 +97,8 @@ public abstract class MobileBrowser extends Browser<AppiumDriver> {
     }
 
     /**
-     *
      * @param pageClass - the class of the expected Page after refreshing.
-     * @param <T> - class that extends TopLevelPage class
+     * @param <T>       - class that extends TopLevelPage class
      * @return - a page of the requested class
      */
     @Override
@@ -180,20 +179,25 @@ public abstract class MobileBrowser extends Browser<AppiumDriver> {
 
     /**
      * Swipe from the top to bottom for 2.5 seconds
+     *
      * @param yStart - 0 is the upper side of the smart-phone
-     * @param yEnd - the end coordinate of the drag function
+     * @param yEnd   - the end coordinate of the drag function
      */
     public void drag(int yStart, int yEnd) {
         int midScreen = getScreenWidth() / 2;
         webDriver.swipe(midScreen, yStart, midScreen, yEnd, 2500);
     }
 
+    public void drag(int yStart, int yEnd, int duration) {
+        int midScreen = getScreenWidth() / 2;
+        webDriver.swipe(midScreen, yStart, midScreen, yEnd, duration);
+    }
+
     /**
-     *
-     * @param startX - 0 is the left side of the smart-phone
-     * @param endX - end coordinate of the right/left movement
-     * @param startY - 0 is the upper side of the smart-phone
-     * @param endY - end coordinate of the up/down movement
+     * @param startX   - 0 is the left side of the smart-phone
+     * @param endX     - end coordinate of the right/left movement
+     * @param startY   - 0 is the upper side of the smart-phone
+     * @param endY     - end coordinate of the up/down movement
      * @param duration - in milliseconds
      */
     public void swipe(int startX, int endX, int startY, int endY, int duration) {
@@ -211,6 +215,7 @@ public abstract class MobileBrowser extends Browser<AppiumDriver> {
     public void tap(int fingersNum, WebElement webElement, int duration) {
         webDriver.tap(fingersNum, webElement, duration);
     }
+
     public void tap(int fingersNum, int xLocation, int yLocation, int duration) {
         webDriver.tap(fingersNum, xLocation, yLocation, duration);
     }

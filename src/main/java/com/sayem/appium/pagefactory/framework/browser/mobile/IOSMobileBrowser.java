@@ -68,6 +68,7 @@ public class IOSMobileBrowser extends MobileBrowser {
     public IOSSeleniumActions getActions() {
         return new IOSSeleniumActions(this);
     }
+
     /**
      * Swipe from the right to left for a second
      */
@@ -112,10 +113,11 @@ public class IOSMobileBrowser extends MobileBrowser {
 
     /**
      * Will function only with real device
-     * @param startX - 0 is the left side of the smart-phone
-     * @param endX - coordinate to stop swipe
-     * @param startY - 0 is the upper side of the smart-phone
-     * @param endY - coordinate to stop swipe
+     *
+     * @param startX   - 0 is the left side of the smart-phone
+     * @param endX     - coordinate to stop swipe
+     * @param startY   - 0 is the upper side of the smart-phone
+     * @param endY     - coordinate to stop swipe
      * @param duration - in milliseconds
      */
     public void swipe(int startX, int endX, int startY, int endY, int duration) {
@@ -123,7 +125,7 @@ public class IOSMobileBrowser extends MobileBrowser {
     }
 
     /**
-     *  Uses iOS functionality of automatic scroll to top when clicking status bar
+     * Uses iOS functionality of automatic scroll to top when clicking status bar
      */
     public void scrollToTop() {
         getWebDriver().findElementByClassName("UIAStatusBar").click();

@@ -23,12 +23,12 @@ import java.net.URI;
 import java.util.Objects;
 
 public abstract class Browser<D extends WebDriver> {
+    protected static final PageUtils PAGE_UTILS = new PageUtils();
     private static final Logger logger = LoggerFactory.getLogger(Browser.class);
     protected D webDriver;
     protected String baseTestUrl;
     protected TimeoutsConfig timeouts;
     protected Optional<CachedPage> optionalCachedPage = Optional.absent();
-    protected static final PageUtils PAGE_UTILS = new PageUtils();
 
     protected Browser(String baseTestUrl, TimeoutsConfig timeoutsConfig) {
         this.baseTestUrl = Preconditions.checkNotNull(baseTestUrl);
@@ -67,9 +67,9 @@ public abstract class Browser<D extends WebDriver> {
 
     /**
      * Invalidate cached page, and return a fresh TopLevelPage with newly initialized WebElements.
-     *
+     * <p/>
      * This method does not do a Browser Refresh of the page.
-     *
+     * <p/>
      * It does:
      * Invalidate the cache.
      * Initialize the current page again by loading webelements and running page load hooks
@@ -142,7 +142,7 @@ public abstract class Browser<D extends WebDriver> {
 
     //--------------Private helpers------------
     protected void setCachedPage(TopLevelPage p) {
-        if (getBrowserType()!=WebBrowserType.MOBILE) {
+        if (getBrowserType() != WebBrowserType.MOBILE) {
             final String url = webDriver.getCurrentUrl();
             CachedPage cachedPage = new CachedPage(url, p);
             optionalCachedPage = Optional.of(cachedPage);

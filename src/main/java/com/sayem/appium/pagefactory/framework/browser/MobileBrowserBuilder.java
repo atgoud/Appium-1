@@ -12,18 +12,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
  * <p>Builder class for creating an App that is running on an emulator or a connected device that connected
- *    to the same host as the test code.
- *    Creates either a {@link com.sayem.appium.pagefactory.framework.browser.mobile.AndroidMobileBrowser},
- *    {@link com.sayem.appium.pagefactory.framework.browser.mobile.IOSMobileBrowser}..</p>
- *
- *  <p>A Browser is basically a wrapper for a WebDriver that greatly simplifies configuration,
- *  adds useful utilities, and has methods
- *  for loading {@link com.sayem.appium.pagefactory.framework.pages.Page}'s.
- *
- *  Pages provide an object-oriented solution to Selenium testing. You can write Page classes that model a web page
- *  in the web app you are testing.</p>
+ * to the same host as the test code.
+ * Creates either a {@link com.sayem.appium.pagefactory.framework.browser.mobile.AndroidMobileBrowser},
+ * {@link com.sayem.appium.pagefactory.framework.browser.mobile.IOSMobileBrowser}..</p>
+ * <p/>
+ * <p>A Browser is basically a wrapper for a WebDriver that greatly simplifies configuration,
+ * adds useful utilities, and has methods
+ * for loading {@link com.sayem.appium.pagefactory.framework.pages.Page}'s.
+ * <p/>
+ * Pages provide an object-oriented solution to Selenium testing. You can write Page classes that model a web page
+ * in the web app you are testing.</p>
  */
 
 public class MobileBrowserBuilder {
@@ -52,6 +51,24 @@ public class MobileBrowserBuilder {
         this.timeoutsConfig = TimeoutsConfig.defaultTimeoutsConfig();
         this.platformName = Preconditions.checkNotNull(platformName, "You must provide a non-null platformName!");
 
+    }
+
+    /**
+     * Get a MobileBrowserBuilder for Android and base URL for the webapp you are testing against.
+     *
+     * @param baseTestUrl - base URL for your webapp, e.g. http://my.site.com/base
+     */
+    public static MobileBrowserBuilder getAndroidBuilder(String baseTestUrl) {
+        return new MobileBrowserBuilder(baseTestUrl, MobilePlatformName.ANDROID);
+    }
+
+    /**
+     * Get a MobileBrowserBuilder for iOS and base URL for the webapp you are testing against.
+     *
+     * @param baseTestUrl - base URL for your webapp, e.g. http://my.site.com/base
+     */
+    public static MobileBrowserBuilder getIOSBuilder(String baseTestUrl) {
+        return new MobileBrowserBuilder(baseTestUrl, MobilePlatformName.IOS);
     }
 
     //------------Getters in case the client wants to inspect the config they have so far-----------
@@ -116,25 +133,9 @@ public class MobileBrowserBuilder {
     }
 
     /**
-     * Get a MobileBrowserBuilder for Android and base URL for the webapp you are testing against.
-     * @param baseTestUrl - base URL for your webapp, e.g. http://my.site.com/base
-     */
-    public static MobileBrowserBuilder getAndroidBuilder(String baseTestUrl) {
-        return new MobileBrowserBuilder(baseTestUrl, MobilePlatformName.ANDROID);
-    }
-
-    /**
-     * Get a MobileBrowserBuilder for iOS and base URL for the webapp you are testing against.
-     * @param baseTestUrl - base URL for your webapp, e.g. http://my.site.com/base
-     */
-    public static MobileBrowserBuilder getIOSBuilder(String baseTestUrl) {
-        return new MobileBrowserBuilder(baseTestUrl, MobilePlatformName.IOS);
-    }
-
-
-    /**
      * Creates the MobileBrowser instance, which includes creating the actual Browser process via the underlying Appium
      * Server
+     *
      * @return - a {@link com.sayem.appium.pagefactory.framework.browser.mobile.AndroidMobileBrowser},
      * {@link com.sayem.appium.pagefactory.framework.browser.mobile.IOSMobileBrowser}
      * @throws com.sayem.appium.pagefactory.framework.exception.WebDriverException

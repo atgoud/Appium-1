@@ -7,12 +7,10 @@ import org.openqa.selenium.remote.RemoteWebElement;
 import java.util.HashMap;
 
 /**
- *
  * Selenium Actions for Android Applications
- *
+ * <p/>
  * Currently, this is the same as BaseSeleniumActions, as we don't have any need to implement anything differently
  * for IOS.
- *
  */
 
 public class IOSSeleniumActions extends BaseSeleniumActions<IOSMobileBrowser> {

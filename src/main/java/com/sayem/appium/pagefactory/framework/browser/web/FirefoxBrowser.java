@@ -21,6 +21,8 @@ import java.util.Set;
 
 public class FirefoxBrowser extends WebBrowser {
 
+    private static final Logger logger = LoggerFactory.getLogger(FirefoxBrowser.class);
+
     public FirefoxBrowser(String baseTestUrl,
                           TimeoutsConfig timeoutsConfig,
                           Optional<String> webDriverPath,
@@ -32,9 +34,6 @@ public class FirefoxBrowser extends WebBrowser {
 
         super(baseTestUrl, timeoutsConfig, webDriverPath, browserBinaryPath, browserVersion, browserLocale, startWindowWidth, startWindowHeight);
     }
-
-    private static final Logger logger = LoggerFactory.getLogger(FirefoxBrowser.class);
-
 
     @Override
     public WebBrowserType getBrowserType() {

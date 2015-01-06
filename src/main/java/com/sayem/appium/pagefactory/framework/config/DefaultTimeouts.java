@@ -1,7 +1,6 @@
 package com.sayem.appium.pagefactory.framework.config;
 
 /**
- *
  * Default timeout constants, only for use within this package.
  */
 

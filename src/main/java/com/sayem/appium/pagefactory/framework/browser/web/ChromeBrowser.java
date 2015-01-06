@@ -25,6 +25,8 @@ import java.util.Set;
 import java.util.logging.Level;
 
 public class ChromeBrowser extends WebBrowser {
+    private static final Logger logger = LoggerFactory.getLogger(ChromeBrowser.class);
+
     public ChromeBrowser(String baseTestUrl,
                          TimeoutsConfig timeouts,
                          Optional<String> driverPath,
@@ -39,9 +41,6 @@ public class ChromeBrowser extends WebBrowser {
         super(baseTestUrl, timeouts, driverPath, browserBinaryPath, browserVersion, browserLocale,
                 startWindowWidth, startWindowHeight, browserLogLevel, browserLogFile);
     }
-
-    private static final Logger logger = LoggerFactory.getLogger(ChromeBrowser.class);
-
 
     @Override
     public WebBrowserType getBrowserType() {
